@@ -7,5 +7,11 @@ class Character:
         self.health_points = health_points
         self.mana_points = mana_points
 
+
+    def attack(self, target):
+        target.health_points -= 10
+
+        return f"{self.name} attaked {target.name}... {target.name} has {target.health_points} left"
+
     def __str__(self):
         return f"-------- Character --------\n \tName: {self.name}\n \tRace: {self.race}\n \tClass: {self.char_class}\n \tWeapon: {self.weapon}\n \tHP: {self.health_points}\n \tMP: {self.mana_points}"
