@@ -16,4 +16,12 @@ class Character:
         return f"{self.name} attaked {target.name}... {target.name} has {target.health_points} left"
 
     def __str__(self):
-        return f"-------- Character --------\n \tName: {self.name}\n \tRace: {self.race.value}\n \tClass: {self.char_class}\n \tWeapon: {self.weapon}\n \tHP: {self.health_points}\n \tMP: {self.mana_points}"
+        return f"""
+        -------- Character --------
+        \tName: {self.name}
+        \tRace: {self.race.race_name}
+        \tClass: {self.char_class}
+        \tWeapon: {self.weapon}
+        \tHP: {self.health_points}
+        \tMP: {self.mana_points}
+        """
