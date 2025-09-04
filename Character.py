@@ -39,7 +39,7 @@ class Character:
             return f"{target.name} is dead"
 
 
-        return f"{self.name} used {self.main_spell.spell_name} on {target.name}. {self.name} has {self.mana_points} left"
+        return f"{self.name} used {self.main_spell.spell_name} on {target.name}. {self.name} has {self.mana_points} mana left"
 
     # To string
     def __str__(self):

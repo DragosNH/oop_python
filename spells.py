@@ -2,7 +2,7 @@ from enum import Enum
 
 class Spell(Enum):
     fire_ball = ("Fire ball", 10, 15)
-    ice_bold = ("Ice bolt", 5, 10)
+    ice_bolt = ("Ice bolt", 5, 10)
     spark = ("Spark", 10, 15)
 
     def __init__(self, spell_name, spell_damage, spell_cost):
