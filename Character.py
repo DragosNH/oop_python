@@ -27,7 +27,13 @@ class Character:
     def spell_attack(self, target):
         target.health_points -= target.main_spell.spell_damage
         self.mana_points -= self.main_spell.spell_cost
-        return f"{self.name} used {self.main_spell.spell_name} on {target.name}"
+
+        if target.health_points <= 0:
+            return f"{target.name} is dead"
+        if self.mana_points < self.main_spell.spell_cost:
+            print(f"{self.name} does not have enough mana")
+
+        return f"{self.name} used {self.main_spell.spell_name} on {target.name}. {self.name} has {self.mana_points} left"
 
     # To string
     def __str__(self):
