@@ -1,5 +1,6 @@
 from races import Race
 from spells import Spell
+from random import randint
 
 # Constructor
 class Character:
@@ -14,9 +15,10 @@ class Character:
 
     # Main attack
     def attack(self, target):
-        target.health_points -= 10
+        attack_power = randint(3, 15)
+        target.health_points -= attack_power
 
-        return f"{self.name} attaked {target.name}... {target.name} has {target.health_points} left"
+        return f"{self.name} attaked {target.name} and made a damage of {attack_power} points... {target.name} has {target.health_points} left"
 
     # Magic attack
     def spell_attack(self, target):
