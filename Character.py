@@ -2,6 +2,7 @@ from races import Race
 from spells import Spell
 from random import randint
 from character_class import Character_class
+from weapons import Weapon
 
 
 # Constructor
@@ -12,12 +13,12 @@ class Character:
         self.char_class = char_class
         self.weapon = weapon
         self.main_spell = main_spell
-        self.health_points = health_points + race.hp_bonus + char_class.health_bonus
-        self.mana_points = mana_points + race.mp_bonus + char_class.mana_bonus
+        self.health_points = health_points + race.hp_bonus + char_class.health_bonus + weapon.hp_bonus
+        self.mana_points = mana_points + race.mp_bonus + char_class.mana_bonus + weapon.mana_bonus
 
     # Main attack
     def attack(self, target):
-        attack_power = randint(3, 15) + self.char_class.main_damage_bonus
+        attack_power = randint(3, 15) + self.char_class.main_damage_bonus + self.weapon.main_damage
         target.health_points -= attack_power
 
         if target.health_points < 0:
@@ -28,18 +29,20 @@ class Character:
 
     # Magic attack
     def spell_attack(self, target):
-        target.health_points -= self.main_spell.spell_damage
+        spell_power = randint(3, 15) + self.char_class.magic_damage_bonus + self.main_spell.spell_damage + self.weapon.magic_damage
+        target.health_points -= spell_power
 
         if self.mana_points < self.main_spell.spell_cost:
             print(f"{self.name} does not have enough mana")
 
         self.mana_points -= self.main_spell.spell_cost
 
-        if target.health_points <= 0:
+        if target.health_points < 0:
+            target.health_points = 0
             return f"{target.name} is dead"
 
 
-        return f"{self.name} used {self.main_spell.spell_name} on {target.name}. {self.name} has {self.mana_points} mana left"
+        return f"{self.name} used {self.main_spell.spell_name} on {target.name} with a power of: {spell_power}. {self.name} has {self.mana_points} mana left"
 
     # To string
     def __str__(self):
