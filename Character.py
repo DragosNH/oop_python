@@ -18,6 +18,9 @@ class Character:
         attack_power = randint(3, 15)
         target.health_points -= attack_power
 
+        if target.health_points <= 0:
+            return f"{target.name} is dead"
+
         return f"{self.name} attaked {target.name} and made a damage of {attack_power} points... {target.name} has {target.health_points} left"
 
     # Magic attack

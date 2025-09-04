@@ -6,7 +6,8 @@ def main():
     aragorn = Character("Aragorn", Race.Human, "Ranger", "Sword", Spell.fire_ball, 100, 100)
     borromir = Character("Borromir", Race.Orc, "Ranger", "Sword", Spell.fire_ball, 100, 100)
 
-    print(aragorn.attack(borromir))
+    while borromir.health_points > 0:
+        print(aragorn.attack(borromir))
 
 
 if __name__ == "__main__":
