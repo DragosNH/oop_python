@@ -17,7 +17,7 @@ def main():
         if borromir.mana_points < borromir.main_spell.spell_cost:
             break
         print(borromir.spell_attack(aragorn))
-        print(f"---{aragorn.name} has {aragorn.health_points} left ---")
+        print(f"---{aragorn.name} has {aragorn.health_points} HP left ---")
         print("--------------------------------")
 
 
