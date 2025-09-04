@@ -10,17 +10,25 @@ def main():
     orcomir = Character("Orcomir", Race.Orc, Character_class.wizard, Weapon.staff, Spell.ice_bolt, 100, 100)
 
     # Fighthing is taking place here
-    while orcomir.health_points > 0 or aragorn.health_points > 0:
-        if orcomir.health_points <= 0 or aragorn.health_points <= 0:
-            break
+    while orcomir.health_points > 0 and aragorn.health_points > 0:
         print(aragorn.attack(orcomir))
-        print(f"---{orcomir.name} has {orcomir.health_points} left ---")
+        print(f"---{orcomir.name} has {orcomir.health_points} HP left ---")
         print("--------------------------------")
-        if orcomir.mana_points < orcomir.main_spell.spell_cost:
+        if orcomir.health_points <= 0:
+            print("Aragorn won the fight")
             break
+
+        if orcomir.mana_points < orcomir.main_spell.spell_cost:
+            print(f"{orcomir.name} is out of mana!")
+            break
+
         print(orcomir.spell_attack(aragorn))
         print(f"---{aragorn.name} has {aragorn.health_points} HP left ---")
         print("--------------------------------")
+        if aragorn.health_points <= 0:
+            print("Orcomir won the fight")
+            break
+
 
 if __name__ == "__main__":
     main()
